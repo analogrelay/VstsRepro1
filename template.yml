@@ -1,0 +1,9 @@
+parameters:
+  secret: ''
+
+phases:
+- phase: From Template
+  queue: Hosted VS2017
+  steps:
+  - script: "echo Secret=${{ parameters.secret }}"
+    displayName: Display Secret Value Directly

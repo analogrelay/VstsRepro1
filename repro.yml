@@ -1,0 +1,11 @@
+phases:
+ - template: ./template.yml
+   parameters:
+     secret: $(SecretValue)
+ - phase: Direct
+   queue: Hosted VS2017
+   steps:
+   - checkout: self
+     clean: true
+   - script: "echo Secret=$(SecretValue)"
+     displayName: Display Secret Value Directly
