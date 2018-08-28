@@ -4,6 +4,8 @@ parameters:
 phases:
 - phase: FromTemplate
   queue: Hosted VS2017
+  variables:
+    sec: ${{ parameters.secret }}
   steps:
-  - script: "echo Secret=${{ parameters.secret }}"
+  - script: "echo Secret=$(sec)"
     displayName: Display Secret Value Directly
