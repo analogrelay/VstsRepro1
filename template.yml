@@ -1,11 +1,19 @@
 parameters:
   secret: ''
+  kvsecret: ''
 
 phases:
 - phase: FromTemplate
   queue: Hosted VS2017
   variables:
-    sec: ${{ parameters.secret }}
+    sec_var: ${{ parameters.secret }}
   steps:
-  - script: "echo Secret=$(sec)"
+  - script: "echo Secret=$(sec_var)"
+    displayName: Display Secret Value Directly
+- phase: FromTemplateKeyVault
+  queue: Hosted VS2017
+  variables:
+    kvsec_var: ${{ parameters.kvsecret }}
+  steps:
+  - script: "echo Secret=$(kvsec_var)"
     displayName: Display Secret Value Directly

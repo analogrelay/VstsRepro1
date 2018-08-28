@@ -2,10 +2,18 @@ phases:
  - template: ./template.yml
    parameters:
      secret: $(SecretValue)
+     kvsecret: $(KVSec)
  - phase: Direct
    queue: Hosted VS2017
    steps:
    - checkout: self
      clean: true
    - script: "echo Secret=$(SecretValue)"
+     displayName: Display Secret Value Directly
+ - phase: DirectKeyVault
+   queue: Hosted VS2017
+   steps:
+   - checkout: self
+     clean: true
+   - script: "echo Secret=$(KeyVaultSecret)"
      displayName: Display Secret Value Directly
