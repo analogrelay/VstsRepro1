@@ -2,7 +2,7 @@ parameters:
   secret: ''
 
 phases:
-- phase: From Template
+- phase: FromTemplate
   queue: Hosted VS2017
   steps:
   - script: "echo Secret=${{ parameters.secret }}"
